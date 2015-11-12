@@ -9,7 +9,7 @@ import manyToMany from './helpers/many-to-many';
 
 import Content from '../model/content';
 
-import ContentType, {contentCounts} from './content-type';
+import ContentType, {contentCounts} from '../type/content-type';
 
 export default new GraphQLObjectType({
   name: 'ModuleType',

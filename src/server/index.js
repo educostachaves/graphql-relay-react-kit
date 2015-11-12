@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { Schema } from './data/schema';
 import expressGraphql from 'express-graphql';
 import express from 'express';
 import keystone from 'keystone';
@@ -30,7 +31,7 @@ keystone.import('./model');
 keystone.start();
 
 app.use('/graphql', expressGraphql({
-  schema: require('./data/schema'),
+  schema: Schema,
   graphiql: true
 }));
 

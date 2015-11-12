@@ -13,7 +13,7 @@ import manyToMany from './helpers/many-to-many';
 import StudyPlan from '../model/study-plan';
 import Module from '../model/module';
 
-import ModuleType from './module-type';
+import ModuleType from '../type/module-type';
 
 const StudyPlanType = new GraphQLObjectType({
   name: 'StudyPlanType',
