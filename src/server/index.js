@@ -30,7 +30,7 @@ keystone.import('./model');
 keystone.start();
 
 app.use('/graphql', expressGraphql({
-  schema: require('./types/chimera-schema'),
+  schema: require('./data/schema'),
   graphiql: true
 }));
 

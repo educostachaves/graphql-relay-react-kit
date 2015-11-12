@@ -13,9 +13,9 @@ import StudyPlan from '../model/study-plan';
 import Module from '../model/module';
 import Content from '../model/content';
 
-import StudyPlanType from './study-plan-type';
-import ModuleType from './module-type';
-import ContentType from './content-type';
+import StudyPlanType from '../type/study-plan-type';
+import ModuleType from '../type/module-type';
+import ContentType from '../type/content-type';
 
 const queryType = new GraphQLObjectType({
   name: 'chimera',

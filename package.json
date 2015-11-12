@@ -7,6 +7,8 @@
     "start": "gulp"
   },
   "dependencies": {
+    "babel": "^5.8.34",
+    "babel-core": "^5.8.34",
     "co": "^4.6.0",
     "express-graphql": "^0.3.0",
     "graphql": "^0.4.2",
