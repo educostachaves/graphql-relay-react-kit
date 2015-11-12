@@ -18,7 +18,7 @@ keystone.init({
   'mongo': process.env.DB || 'mongodb://localhost/chimera-dev',
   'favicon': 'public/favicon.ico',
   'view engine': 'jade',
-  'updates': '../db/updates',
+  'updates': './db/updates',
   'auto update': true,
   'session': true,
   'auth': true,
