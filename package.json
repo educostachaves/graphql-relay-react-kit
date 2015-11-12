@@ -11,6 +11,7 @@
     "express-graphql": "^0.3.0",
     "graphql": "^0.4.2",
     "graphql-relay": "^0.3.0",
+    "keystone": "^0.3.15",
     "react": "^0.14.0-beta3",
     "react-dom": "^0.14.0-beta3",
     "react-relay": "^0.1.1",

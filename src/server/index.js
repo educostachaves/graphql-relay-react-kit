@@ -1,16 +1,37 @@
 import mongoose from 'mongoose';
+import expressGraphql from 'express-graphql';
 import express from 'express';
-import { Schema } from './data/schema';
-import graphQLHTTP from 'express-graphql';
-
-mongoose.connect(process.env.DB || 'mongodb://localhost/chimera-dev');
+import keystone from 'keystone';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 9000;
 
-app.use('/', graphQLHTTP({ schema: Schema, pretty: true, graphiql: true }));
-app.listen(9000, (err) => {
-  if (err)
-    return console.error(err);
-  console.log('GraphQL Server is now running on localhost:9000');
+if (process.env.NODE_ENV != 'production') mongoose.set('debug', true);
+
+keystone.set('app', app);
+keystone.set('mongoose', mongoose);
+
+keystone.init({
+  'name': 'chimera',
+  'brand': 'Descomplica',
+  'port': port,
+  'mongo': process.env.DB || 'mongodb://localhost/chimera-dev',
+  'favicon': 'public/favicon.ico',
+  'view engine': 'jade',
+  'updates': '../db/updates',
+  'auto update': true,
+  'session': true,
+  'auth': true,
+  'user model': 'AdminUser',
+  'cookie secret': process.env.COOKIE_SECRET || 'AcX&FL<VClMida+_vQf$IH$Mg"MFK*4=3O9Hku*`]u1(e=ly.:3thM9K.9yyrE#"'
 });
+
+keystone.import('./model');
+keystone.start();
+
+app.use('/graphql', expressGraphql({
+  schema: require('./types/chimera-schema'),
+  graphiql: true
+}));
+
+console.log(`chimera started on port: ${port}`);
